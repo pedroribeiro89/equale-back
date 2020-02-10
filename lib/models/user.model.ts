@@ -11,6 +11,7 @@ export class User extends Model {
     public readonly updatedAt!: Date;
 
     public photo: string;
+    public video: string;
     public description: string;
     public courseId: number;
 
@@ -43,6 +44,7 @@ User.init(
             allowNull: false
         },
         photo: { type: new DataTypes.STRING },
+        video: { type: new DataTypes.STRING },
         description: { type: new DataTypes.STRING(1020) },
         phone: { type: new DataTypes.INTEGER },
         cep: { type: new DataTypes.INTEGER },
@@ -67,6 +69,7 @@ export interface UserInterface {
     email: string;
     type: Hat;
     photo: string;
+    video: string;
     description: string;
     courseId: number;
     phone: number;
@@ -79,7 +82,7 @@ export interface UserInterface {
 }
 
 export enum Hat {
-    admin,
-    student,
-    supporter
+    admin = 1,
+    student = 2,
+    supporter = 3
 }
