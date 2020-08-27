@@ -1,24 +1,17 @@
-import {User} from "../models/user.model";
+import {Hat, User} from "../models/user.model";
+import {UserController} from "../controllers/user.controller";
+import {ADMIN} from "../settings";
 
 const AdminBro = require('admin-bro');
 const AdminBroExpress = require('admin-bro-expressjs');
 const AdminBroSequelize = require('admin-bro-sequelizejs');
 // AdminBro.registerAdapter(AdminBroSequelize);
 
-import * as express from "express";
-
 export class AdminRouter {
-
-    public ADMIN = {
-        // email: process.env.ADMIN_EMAIL || 'admin@example.com',
-        // password: process.env.ADMIN_PASSWORD || 'lovejs'
-        email: 'admin@example.com',
-        password: 'lovejs'
-    };
 
     public router;
     public adminBro;
-
+    public userController = new UserController();
 
     constructor() {
         AdminBro.registerAdapter(AdminBroSequelize);
@@ -30,8 +23,12 @@ export class AdminRouter {
             cookieName: 'admin-bro',
             cookiePassword: 'supersecret-and-long-password-for-a-cookie-in-the-browser',
             authenticate: async (email, password) => {
-                if (email === this.ADMIN.email && password === this.ADMIN.password) {
-                    return this.ADMIN;
+                if (email === ADMIN.email && password === ADMIN.password) {
+                    return ADMIN;
+                }
+                let user: User = await this.userController.getStudentByEmail(email);
+                if (user && user.type === Hat.admin && await user.validPassword(password)) {
+                    return true;
                 }
                 return null;
             }

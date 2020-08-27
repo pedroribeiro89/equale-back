@@ -9,6 +9,7 @@ const options: StrategyOptions = {
 };
 
 const verifyCallback: VerifyCallback = function (jwtToken, done) {
+    console.log('foi');
     User.findOne({ where: { id: jwtToken.id } })
         .then((user: User | null) => {
             if (user) {

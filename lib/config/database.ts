@@ -6,3 +6,4 @@ export const database = new Sequelize(
     'imaginie',
     { dialect: 'mysql'}
 );
+

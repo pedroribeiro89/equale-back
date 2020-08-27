@@ -51,6 +51,10 @@ export class UserController {
             }).catch((err: Error) => res.status(500).json(err));
     }
 
+    public async getStudentByEmail(email: string): Promise<User|null> {
+        return User.findOne<User>({ where: { email: email } });
+    }
+
     public createStudent(req: Request, res: Response) {
         const params: UserInterface = req.body;
 
