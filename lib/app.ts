@@ -8,6 +8,7 @@ import {CourseRoutes} from "./routes/course.router";
 import * as cors from "cors";
 import {corsConfig} from "./config/cors";
 import {AuthRoutes} from "./routes/auth.router";
+import {DonationRoutes} from "./routes/donation.router";
 
 
 class App {
@@ -15,6 +16,7 @@ class App {
     public authRoutes = new AuthRoutes();
     public studentRoutes = new StudentRoutes();
     public courseRoutes = new CourseRoutes();
+    public donationRoutes = new DonationRoutes();
 
     constructor() {
         this.app = express();
@@ -35,6 +37,7 @@ class App {
         this.authRoutes.configRoutes(this.app);
         this.studentRoutes.configRoutes(this.app);
         this.courseRoutes.configRoutes(this.app);
+        this.donationRoutes.configRoutes(this.app);
     }
 }
 

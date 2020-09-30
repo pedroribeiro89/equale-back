@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {UserController} from "../controllers/user.controller";
+import {retrieveStudentController} from "../useCases/RetrieveStudent";
 
 export class StudentRoutes {
 
@@ -12,10 +13,12 @@ export class StudentRoutes {
 
     configRoutes(app) {
         app.route("/students")
-            .get(this.userController.studentList)
+            .get((request, response) => { return retrieveStudentController.handle(request, response); })
+            // .get(this.userController.studentList)
             .post(this.userController.createStudent);
 
         app.route("/students/:id")
-            .get(this.userController.getStudentById);
+            .get((request, response) => { return retrieveStudentController.handle(request, response); })
+            // .get(this.userController.getStudentById);
     }
 }
