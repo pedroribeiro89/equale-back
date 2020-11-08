@@ -3,5 +3,5 @@ export interface IBaseRepository<T> {
     delete(data: T): Promise<any>;
     getById(id: number): Promise<T>;
     list(): Promise<T[]>;
-    save(data: T): Promise<any>;
+    save(data: T): Promise<T>;
 }

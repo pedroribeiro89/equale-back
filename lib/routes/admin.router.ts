@@ -1,6 +1,6 @@
 import {Hat, User} from "../models/user.model";
 import {UserController} from "../controllers/user.controller";
-import {ADMIN} from "../settings";
+// import {ADMIN} from "../settings";
 
 const AdminBro = require('admin-bro');
 const AdminBroExpress = require('admin-bro-expressjs');
@@ -23,8 +23,15 @@ export class AdminRouter {
             cookieName: 'admin-bro',
             cookiePassword: 'supersecret-and-long-password-for-a-cookie-in-the-browser',
             authenticate: async (email, password) => {
-                if (email === ADMIN.email && password === ADMIN.password) {
-                    return ADMIN;
+                // if (email === ADMIN.email && password === ADMIN.password) {
+                //     return ADMIN;
+                // }
+
+                if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+                    return {
+                        email: process.env.ADMIN_EMAIL,
+                        password: process.env.ADMIN_PASSWORD
+                    }
                 }
                 let user: User = await this.userController.getStudentByEmail(email);
                 if (user && user.type === Hat.admin && await user.validPassword(password)) {

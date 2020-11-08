@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {RetrieveStudentUseCase} from "./RetrieveStudentUseCase";
+import { RetrieveStudentUseCase } from "./RetrieveStudentUseCase";
 
 export class RetrieveStudentController {
     constructor(private useCase: RetrieveStudentUseCase) {}
@@ -11,9 +11,7 @@ export class RetrieveStudentController {
             const student = await this.useCase.execute(id ? +id : null);
             return response.status(201).json(student).send();
         } catch (err) {
-            return response.status(400).json({
-                message: err.message || 'Unexpected error.'
-            });
+            return response.status(400).json({ message: err.message || 'Unexpected error.' });
         }
     }
 }

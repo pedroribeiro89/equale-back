@@ -1,7 +1,7 @@
 import {IUsersRepository} from "../IUserRepository";
 import {Hat, User} from "../../models/user.model";
 
-export class UsersRepositoryMySQl implements IUsersRepository {
+export class UsersRepositoryMySQL implements IUsersRepository {
     delete(data: User): Promise<any> {
         return User.destroy({ where: { id: data.id.toString() } });
     }
@@ -19,9 +19,9 @@ export class UsersRepositoryMySQl implements IUsersRepository {
         return User.findAll<User>();
     }
 
-    save(data: User): Promise<any> {
-        //TODO
-        return undefined;
+    async save(data: User): Promise<User> {
+        await data.save();
+        return data;
     }
 
     listByType(type: Hat): Promise<User[]> {
@@ -31,6 +31,10 @@ export class UsersRepositoryMySQl implements IUsersRepository {
     async findUserById(id: number): Promise<User> {
         const user = await User.findByPk<User>(id);
         return user.type === Hat.student ? user : null;
+    }
+
+    findUserByEmail(email: string): Promise<User> {
+        return User.findOne<User>({ where: { email: email } });
     }
 
 }

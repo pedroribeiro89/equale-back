@@ -1,10 +1,11 @@
 import {Router} from "express";
-import {DonationController} from "../controllers/donation.controller";
+import {donationController} from "../useCases/MakeDonation";
+// import {DonationController} from "../controllers/donation.controller";
 
 export class DonationRoutes {
 
     public router: Router;
-    public donationController = new DonationController();
+    // public donationController = new DonationController();
 
     constructor() {
         this.router = Router();
@@ -12,7 +13,7 @@ export class DonationRoutes {
 
     configRoutes(app) {
         app.route("/donation")
-            // .get((request, response) => { return retrieveStudentController.handle(request, response); })
-            .post(this.donationController.createDonation);
+            .post((request, response) => { return donationController.handle(request, response); })
+            // .post(this.donationController.createDonation);
     }
 }

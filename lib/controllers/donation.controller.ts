@@ -8,6 +8,8 @@ export class DonationController {
 
         console.log(JSON.parse(req.body.paymentDataForm));
         console.log(JSON.parse(req.body.userDataForm));
+
+
         // console.log(JSON.parse(req.body));
         res.status(201);
         // const params: UserInterface = req.body;
