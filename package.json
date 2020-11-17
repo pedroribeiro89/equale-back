@@ -5,7 +5,12 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --watch ts-node lib/server.ts"
+    "start": "nodemon --watch ts-node lib/server.ts",
+    "tsc": "tsc",
+    "postinstall": "tsc"
+  },
+  "engines": {
+    "node": "10.15.3"
   },
   "author": "pedroribeiro89",
   "license": "MIT",

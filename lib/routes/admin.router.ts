@@ -22,6 +22,7 @@ export class AdminRouter {
             // cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
             cookieName: 'admin-bro',
             cookiePassword: 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+
             authenticate: async (email, password) => {
                 // if (email === ADMIN.email && password === ADMIN.password) {
                 //     return ADMIN;
@@ -39,6 +40,9 @@ export class AdminRouter {
                 }
                 return null;
             }
+        }, null, {
+            resave: false,
+            saveUninitialized: true,
         });
 
         // let router = express.Router();
