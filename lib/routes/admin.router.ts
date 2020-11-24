@@ -1,5 +1,6 @@
 import {Hat, User} from "../models/user.model";
 import {UserController} from "../controllers/user.controller";
+import {database} from "../config/database";
 // import {ADMIN} from "../settings";
 
 const AdminBro = require('admin-bro');
@@ -15,7 +16,8 @@ export class AdminRouter {
 
     constructor() {
         AdminBro.registerAdapter(AdminBroSequelize);
-        this.adminBro = new AdminBro({ databases: [User], rootPath: '/admin' });
+        // this.adminBro = new AdminBro({ databases: [User], rootPath: '/admin' }
+        this.adminBro = new AdminBro({ databases: [database], rootPath: '/admin' });
 
         this.router = AdminBroExpress.buildAuthenticatedRouter(this.adminBro, {
             // cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
