@@ -38,7 +38,7 @@ export class AsaasPaymentIntegration implements IPaymentIntegration {
 
     async createSubscription(subscription: ISubscriptionCreationData): Promise<IAssasSubscription> {
         try {
-            const response = await this.axiosInstance.post<IAssasSubscription>(`/subscriptions`, {...subscription});
+            const response = await this.axiosInstance.post<IAssasSubscription>(`/subscriptions`, {...subscription, remoteIp: '10.10.10.10'});
             return response.data;
         } catch (e) {
             console.log(e.message);

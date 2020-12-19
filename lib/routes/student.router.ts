@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {UserController} from "../controllers/user.controller";
 import {retrieveStudentController} from "../useCases/RetrieveStudent";
+import {AuthController} from "../controllers/auth.controller";
 
 export class StudentRoutes {
 

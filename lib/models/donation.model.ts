@@ -1,6 +1,5 @@
 import  {Model, DataTypes, InitOptions, ModelAttributes} from "sequelize";
 import {database} from "../config/database";
-import {Course} from "./course.model";
 import {User} from "./user.model";
 
 export class Donation extends Model {
