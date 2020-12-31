@@ -1,5 +1,5 @@
 import {DataTypes, InitOptions, Model, ModelAttributes} from "sequelize";
-import {Hat, User} from "./user.model";
+import {User} from "./user.model";
 import {database} from "../config/database";
 
 export class Message extends Model {

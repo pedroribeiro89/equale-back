@@ -26,11 +26,8 @@ const courseModelAttributes: ModelAttributes = {
 
 const courseInitOptions: InitOptions = {
     tableName: "course",
-    sequelize: database // this bit is important
+    sequelize: database
 };
 
 Course.init(courseModelAttributes, courseInitOptions);
-
-// Course.sync({ force: false }).then(() => console.log("Course table created"));
-
 

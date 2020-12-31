@@ -1,7 +1,7 @@
 import {DataMapper} from "../DataMapper";
 import {Message} from "../../models/message.model";
 import {IChatDTO, IMessageDTO} from "./ChatDTO";
-import {Hat, User} from "../../models/user.model";
+import {User} from "../../models/user.model";
 
 export class ChatMapper implements DataMapper<Message> {
     toChatDTO(user: User, messages: Message[]): IChatDTO {

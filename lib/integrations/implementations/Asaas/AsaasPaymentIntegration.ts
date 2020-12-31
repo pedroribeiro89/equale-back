@@ -1,10 +1,4 @@
-import {
-    IBilling, IBillingCreationData,
-    IClient,
-    IPaymentIntegration,
-    ISubscription,
-    ISubscriptionCreationData
-} from "../../IPaymentIntegration";
+import {IBillingCreationData, IPaymentIntegration, ISubscriptionCreationData} from "../../IPaymentIntegration";
 import {
     IAsaasBilling,
     IAsaasClient,
@@ -12,7 +6,7 @@ import {
     IAsaasClientDTO,
     IAssasSubscription
 } from "./AsaasModels";
-import axios, {AxiosError, AxiosResponse} from 'axios';
+import axios from 'axios';
 
 export class AsaasPaymentIntegration implements IPaymentIntegration {
 
@@ -58,7 +52,5 @@ export class AsaasPaymentIntegration implements IPaymentIntegration {
             return response.data;
         } catch (e) { throw e; }
     }
-
-
 
 }

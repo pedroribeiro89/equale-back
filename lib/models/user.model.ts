@@ -101,6 +101,4 @@ User.init(userModelAttributes, userInitOptions);
 
 User.belongsTo(Course);
 
-// User.sync({ force: false}).then(() => console.log("User table created"));
-
 
